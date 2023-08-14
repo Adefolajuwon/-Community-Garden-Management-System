@@ -1,0 +1,30 @@
+{
+  "name": "collaborative-storytelling",
+  "version": "1.0.0",
+  "description": "<!-- Collaborative Storytelling Platform The Collaborative Storytelling Platform is a web-based application that enables users to collaboratively create and shape stories in real time. This platform provides a unique and engaging experience where multiple authors can contribute their creative ideas, characters, and plot twists to develop captivating narratives together.",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adefolajuwon/Collaborative-Storytelling.git"
+  },
+  "author": "Juwon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Adefolajuwon/Collaborative-Storytelling/issues"
+  },
+  "homepage": "https://github.com/Adefolajuwon/Collaborative-Storytelling#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^7.4.3",
+    "nodemon": "^3.0.1"
+  }
+}
