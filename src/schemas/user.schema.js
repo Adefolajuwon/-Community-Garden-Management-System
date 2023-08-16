@@ -9,10 +9,10 @@ const userSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	// provider: {
-	// 	type: String,
-	// 	required: true,
-	// },
+	bio: {
+		type: String,
+		required: true,
+	},
 	password: {
 		type: String,
 		required: false,

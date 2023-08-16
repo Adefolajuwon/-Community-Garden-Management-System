@@ -8,5 +8,6 @@ app.use(
 		origin: '*',
 	})
 );
+app.use('/api/auth');
 
 module.exports = app;

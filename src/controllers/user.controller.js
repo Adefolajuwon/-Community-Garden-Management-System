@@ -7,7 +7,13 @@ const {
 	insertNewUser,
 	fetchUserByEmail,
 } = require('../models/users.model');
-async function createUser(req, res) {}
+async function createUser(req, res) {
+	try {
+		const { firstname, email, bio, password } = req.body;
+		if (email) {
+		}
+	} catch (error) {}
+}
 async function controllerAuthGoogle(req, res, next) {
 	try {
 		if (!req.isAuthenticated()) {
