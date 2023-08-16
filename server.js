@@ -4,7 +4,7 @@ const app = require('./app');
 const { startMongoose } = require('./lib/mongoose');
 
 const PORT = process.env.PORT || 8000;
-const server = http.createServer(certData, app);
+const server = http.createServer(app);
 
 (async function () {
 	await startMongoose();
