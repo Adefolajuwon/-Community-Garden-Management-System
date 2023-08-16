@@ -1,7 +1,7 @@
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const createTransporter = require('../email.js');
+// const createTransporter = require('../email.js');
 const {
 	storeGoogleUser,
 	insertNewUser,
