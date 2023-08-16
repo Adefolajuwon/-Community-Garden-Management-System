@@ -23,7 +23,10 @@ async function createUser(req, res) {
 			});
 			return user;
 		}
-	} catch (error) {}
+	} catch (error) {
+		res.status(501).json(error);
+		console.log(error);
+	}
 }
 async function controllerAuthGoogle(req, res, next) {
 	try {
@@ -188,4 +191,5 @@ module.exports = {
 	controllerVerifyUserCredentials,
 	controllerFetchLoggedInUser,
 	sendEmail,
+	createUser,
 };
