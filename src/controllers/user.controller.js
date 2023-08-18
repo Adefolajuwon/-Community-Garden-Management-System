@@ -27,12 +27,14 @@ async function createUser(req, res) {
 async function getSpecificUser(req, res) {
 	try {
 		const { firstname } = req.params;
+		console.log(firstname);
+
 		const user = await User.findOne({ where: { firstname: firstname } });
 
 		if (user) {
 			res.status(200).json({ user: user });
 		} else {
-			// User not found, send a 404 error response
+			// User not found, send a 404 error response.
 			res.status(404).json({ error: 'User not found' });
 		}
 	} catch (error) {
