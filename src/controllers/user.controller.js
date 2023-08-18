@@ -26,8 +26,8 @@ async function createUser(req, res) {
 }
 async function getSpecificUser(req, res) {
 	try {
-		const { username } = req.params;
-		const user = await User.findOne({ where: { username: username } });
+		const { firstname } = req.params;
+		const user = await User.findOne({ where: { firstname: firstname } });
 
 		if (user) {
 			// User found, send the user object as a response

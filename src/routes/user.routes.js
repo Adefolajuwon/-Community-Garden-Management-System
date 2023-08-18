@@ -5,6 +5,6 @@ const {
 	getSpecificUser,
 } = require('../controllers/user.controller');
 userRouter.post('/register', createUser);
-userRouter.get('/register', getSpecificUser);
+userRouter.get('/user/:firstname', getSpecificUser);
 
 module.exports = { userRouter };
