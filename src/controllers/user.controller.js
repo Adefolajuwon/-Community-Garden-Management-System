@@ -30,7 +30,6 @@ async function getSpecificUser(req, res) {
 		const user = await User.findOne({ where: { firstname: firstname } });
 
 		if (user) {
-			// User found, send the user object as a response
 			res.status(200).json({ user: user });
 		} else {
 			// User not found, send a 404 error response
