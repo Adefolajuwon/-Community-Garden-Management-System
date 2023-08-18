@@ -206,4 +206,5 @@ module.exports = {
 	controllerFetchLoggedInUser,
 	sendEmail,
 	createUser,
+	getSpecificUser,
 };
