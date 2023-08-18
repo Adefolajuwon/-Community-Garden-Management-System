@@ -4,18 +4,42 @@ const User = require('../schemas/user.schema');
 async function createUser(req, res) {
 	try {
 		const { firstname, email, bio, password } = req.body;
+
+		// Perform email validation if needed
 		// validateEmail(email);
+
 		const user = await User.create({
 			firstname,
 			email,
 			bio,
-
 			password,
 		});
-		return user;
+
+		// Send a response back to the client with the created user data
+		res.status(201).json(user);
 	} catch (error) {
-		res.status(501).json(error);
-		console.log(error);
+		console.error(error);
+		res
+			.status(500)
+			.json({ message: 'An error occurred while creating the user.' });
+	}
+}
+async function getSpecificUser(req, res) {
+	try {
+		const { username } = req.params;
+		const user = await User.findOne({ where: { username: username } });
+
+		if (user) {
+			// User found, send the user object as a response
+			res.status(200).json({ user: user });
+		} else {
+			// User not found, send a 404 error response
+			res.status(404).json({ error: 'User not found' });
+		}
+	} catch (error) {
+		// Handle errors and send an appropriate error response
+		console.error('Error fetching user:', error);
+		res.status(500).json({ error: 'Internal server error' });
 	}
 }
 async function controllerAuthGoogle(req, res, next) {
