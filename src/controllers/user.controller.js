@@ -1,12 +1,3 @@
-require('dotenv').config();
-// const jwt = require('jsonwebtoken');
-// const bcrypt = require('bcrypt');
-// // const createTransporter = require('../email.js');
-// const {
-// 	storeGoogleUser,
-// 	insertNewUser,
-// 	fetchUserByEmail,
-// } = require('../models/users.model');
 const { validateEmail } = require('../helper/emailValidation');
 const User = require('../schemas/user.schema');
 
@@ -18,6 +9,7 @@ async function createUser(req, res) {
 			firstname,
 			email,
 			bio,
+
 			password,
 		});
 		return user;
@@ -112,7 +104,7 @@ async function controllerVerifyUserCredentials(req, res) {
 			res.status(400).json({ error: 'Please provide all credentials' });
 			return;
 		}
-		// Fetch user
+		// Fetch user.
 		let exists = await fetchUserByEmail(email);
 		if (!exists) {
 			res.status(404).json({
