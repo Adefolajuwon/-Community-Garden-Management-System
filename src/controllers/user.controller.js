@@ -28,7 +28,7 @@ async function getSpecificUser(req, res) {
 	try {
 		const { firstname } = req.params;
 
-		const user = await User.find({ firstname: firstname });
+		const user = await User.findOne({ firstname: firstname });
 		console.log(user);
 		if (user) {
 			res.status(200).json({ user: user });
