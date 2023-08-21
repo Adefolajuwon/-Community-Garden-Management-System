@@ -47,4 +47,19 @@ async function allGardens(req, res) {
 		res.status(500).json({ error: 'Internal server error' });
 	}
 }
-module.exports = { newGarden, allGardens };
+async function getSpecificGarden(req, res) {
+	try {
+		const { id } = req.params;
+		const garden = await Gardenplot.findById(id); // Use findById to find by ID
+		if (garden) {
+			res.status(200).json(garden); // Use res instead of req
+		} else {
+			res.status(404).json({ error: 'Could not find garden' }); // Use 404 status
+		}
+	} catch (error) {
+		console.error(error); // Use console.error for logging
+		res.status(500).json({ error: 'Internal server error' }); // Use 500 status
+	}
+}
+
+module.exports = { newGarden, allGardens, getSpecificGarden };
