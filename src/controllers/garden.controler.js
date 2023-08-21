@@ -79,7 +79,13 @@ async function updateGarden() {
 	try {
 		const { id } = req.params;
 		const { location } = req.body;
-		const garden = await GardenPlot.findByIdAndUpdate();
+		const data = {
+			location: location,
+		};
+		const garden = await GardenPlot.findByIdAndUpdate(id, data,  { new: true }).then(
+            if()
+        );
+        if()
 	} catch (error) {}
 }
 module.exports = { newGarden, allGardens, getSpecificGarden, deleteGarden };
