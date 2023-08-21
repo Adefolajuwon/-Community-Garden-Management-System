@@ -93,4 +93,10 @@ async function updateGarden() {
 		res.status(501).json(error);
 	}
 }
-module.exports = { newGarden, allGardens, getSpecificGarden, deleteGarden };
+module.exports = {
+	newGarden,
+	allGardens,
+	getSpecificGarden,
+	deleteGarden,
+	updateGarden,
+};
