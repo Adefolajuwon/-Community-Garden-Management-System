@@ -75,7 +75,7 @@ async function deleteGarden(req, res) {
 		res.status(501).json(error);
 	}
 }
-async function updateGarden() {
+async function updateGarden(req, res) {
 	try {
 		const { id } = req.params;
 		const { location } = req.body;
