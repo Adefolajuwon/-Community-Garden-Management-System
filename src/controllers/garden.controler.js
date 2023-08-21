@@ -82,10 +82,15 @@ async function updateGarden() {
 		const data = {
 			location: location,
 		};
-		const garden = await GardenPlot.findByIdAndUpdate(id, data,  { new: true }).then(
-            if()
-        );
-        if()
-	} catch (error) {}
+		const garden = await GardenPlot.findByIdAndUpdate(id, data, { new: true });
+
+		if (garden) {
+			res.status(200).json(garden);
+		}
+		res.status(404).json({ error: 'Garden not found' });
+	} catch (error) {
+		console.log(error);
+		res.status(501).json(error);
+	}
 }
 module.exports = { newGarden, allGardens, getSpecificGarden, deleteGarden };
