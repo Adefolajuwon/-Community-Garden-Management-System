@@ -66,8 +66,8 @@ async function deleteGarden(req, res) {
 		const { id } = req.params;
 		const garden = await GardenPlot.findById(id);
 		if (garden) {
-			await GardenPlot.deleteOne(garden);
 			res.json(200).status(garden);
+			await GardenPlot.deleteOne(garden);
 		} else {
 			res.status(404).json({ error: 'Garden not found' });
 		}
@@ -75,4 +75,4 @@ async function deleteGarden(req, res) {
 		res.status(501).json(error);
 	}
 }
-module.exports = { newGarden, allGardens, getSpecificGarden };
+module.exports = { newGarden, allGardens, getSpecificGarden, deleteGarden };
