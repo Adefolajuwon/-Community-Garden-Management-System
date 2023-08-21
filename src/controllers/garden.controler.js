@@ -1,9 +1,9 @@
-const Gardenplot = require('../schemas/garden.schema');
+const GardenPlot = require('../schemas/garden.schema');
 
 async function newGarden(req, res) {
 	try {
 		const { name, location } = req.body;
-		const garden = await Gardenplot.create({ name, location });
+		const garden = await GardenPlot.create({ name, location });
 		if (garden) {
 			res.status(200).json(garden);
 		} else {
@@ -24,9 +24,9 @@ async function allGardens(req, res) {
 		const startIndex = (parsedPage - 1) * parsedLimit;
 		const endIndex = parsedLimit * parsedPage;
 
-		const totalDocuments = await Gardenplot.countDocuments(); // Count total documents in the collection
+		const totalDocuments = await GardenPlot.countDocuments(); // Count total documents in the collection
 
-		const gardenPlots = await Gardenplot.find({})
+		const gardenPlots = await GardenPlot.find({})
 			.skip(startIndex)
 			.limit(parsedLimit)
 			.sort(sort);
@@ -50,16 +50,29 @@ async function allGardens(req, res) {
 async function getSpecificGarden(req, res) {
 	try {
 		const { id } = req.params;
-		const garden = await Gardenplot.findById(id); // Use findById to find by ID
+		const garden = await GardenPlot.findById(id);
 		if (garden) {
-			res.status(200).json(garden); // Use res instead of req
+			res.status(200).json(garden);
 		} else {
 			res.status(404).json({ error: 'Could not find garden' }); // Use 404 status
 		}
 	} catch (error) {
-		console.error(error); // Use console.error for logging
+		console.error(error);
 		res.status(500).json({ error: 'Internal server error' }); // Use 500 status
 	}
 }
-
+async function deleteGarden(req, res) {
+	try {
+		const { id } = req.params;
+		const garden = await GardenPlot.findById(id);
+		if (garden) {
+			await GardenPlot.deleteOne(garden);
+			res.json(200).status(garden);
+		} else {
+			res.status(404).json({ error: 'Garden not found' });
+		}
+	} catch (error) {
+		res.status(501).json(error);
+	}
+}
 module.exports = { newGarden, allGardens, getSpecificGarden };
