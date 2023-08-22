@@ -84,15 +84,17 @@ async function updateGarden(req, res) {
 		};
 		const garden = await GardenPlot.findByIdAndUpdate(id, data, { new: true });
 
-		if (garden) {
-			res.status(200).json(garden);
+		if (!garden) {
+			return res.status(404).json({ error: 'Garden not found' });
 		}
-		res.status(404).json({ error: 'Garden not found' });
+
+		res.status(200).json(garden);
 	} catch (error) {
-		console.log(error);
-		res.status(501).json(error);
+		console.error(error);
+		res.status(500).json({ error: 'Internal server error' });
 	}
 }
+
 module.exports = {
 	newGarden,
 	allGardens,
