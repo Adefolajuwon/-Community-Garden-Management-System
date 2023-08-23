@@ -4,7 +4,10 @@ const taskSchema = new mongoose.Schema({
 	title: String,
 	description: String,
 	status: String,
-	assignee: String,
+	assignee: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'User',
+	},
 	dueDate: String,
 });
 
