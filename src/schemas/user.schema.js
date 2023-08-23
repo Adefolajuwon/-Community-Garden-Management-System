@@ -17,6 +17,12 @@ const userSchema = new mongoose.Schema({
 		type: String,
 		required: false,
 	},
+	gardens: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'GardenPlot',
+		},
+	],
 });
 
 module.exports = mongoose.model('User', userSchema);

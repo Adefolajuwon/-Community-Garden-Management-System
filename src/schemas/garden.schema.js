@@ -12,7 +12,7 @@ const gardenPlotSchema = new mongoose.Schema({
 		trim: true,
 	},
 	manager: {
-		type: mongooose.Schema.Types.ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'User',
 	},
 });

@@ -2,8 +2,11 @@ const GardenPlot = require('../schemas/garden.schema');
 
 async function newGarden(req, res) {
 	try {
-		const { name, location } = req.body;
-		const garden = await GardenPlot.create({ name, location });
+		const { name, location, manager } = req.body;
+
+		const garden = await (
+			await GardenPlot.create({ name, location, manager })
+		).populate('manager');
 		if (garden) {
 			res.status(200).json(garden);
 		} else {
@@ -50,7 +53,7 @@ async function allGardens(req, res) {
 async function getSpecificGarden(req, res) {
 	try {
 		const { id } = req.params;
-		const garden = await GardenPlot.findById(id);
+		const garden = await GardenPlot.findById(id).populate('User');
 		if (garden) {
 			res.status(200).json(garden);
 		} else {
