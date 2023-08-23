@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 const taskSchema = new mongoose.Schema({
 	title: String,
 	description: String,
-	status: String,
+	status: {
+		status: String,
+		default: 'pending',
+	},
 	assignee: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'User',

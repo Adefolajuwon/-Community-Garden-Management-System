@@ -5,7 +5,9 @@ async function createTask() {
 		const task = await Task.create({ title, description });
 		res.status(200).json(task);
 	} catch (error) {
-		console;
+		console.log(error)
+        res.status(200).json(error)
 	}
 }
+async function (){}
 async function getTask() {}

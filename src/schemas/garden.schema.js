@@ -11,6 +11,10 @@ const gardenPlotSchema = new mongoose.Schema({
 		required: true,
 		trim: true,
 	},
+	manager: {
+		type: mongooose.Schema.Types.ObjectId,
+		ref: 'User',
+	},
 });
 
 const GardenPlot = mongoose.model('GardenPlot', gardenPlotSchema);
