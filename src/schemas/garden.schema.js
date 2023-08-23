@@ -11,40 +11,7 @@ const gardenPlotSchema = new mongoose.Schema({
 		required: true,
 		trim: true,
 	},
-	tasks: [
-		{
-			name: {
-				type: String,
-				required: true,
-				trim: true,
-			},
-			dueDate: {
-				type: Date,
-				required: true,
-			},
-			assignee: {
-				type: mongoose.Schema.Types.ObjectId,
-				ref: 'User',
-			},
-		},
-	],
-	announcements: [
-		{
-			title: {
-				type: String,
-				required: true,
-				trim: true,
-			},
-			content: {
-				type: String,
-				required: true,
-			},
-			timestamp: {
-				type: Date,
-				default: Date.now,
-			},
-		},
-	],
+
 	discussions: [
 		{
 			title: {
