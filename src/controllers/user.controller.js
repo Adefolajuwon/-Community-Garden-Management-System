@@ -3,13 +3,16 @@ const User = require('../schemas/user.schema');
 
 async function createUser(req, res) {
 	try {
-		const { firstname, email, bio, password } = req.body;
+		const { username, email, bio, password } = req.body;
 
 		// Perform email validation if needed
 		// validateEmail(email);
-
+		const verifiedUsername = await User.findOne(username);
+		if (verifiedUsername) {
+			res.status(505).json({ error: 'Username taken' });
+		}
 		const user = await User.create({
-			firstname,
+			username,
 			email,
 			bio,
 			password,

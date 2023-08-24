@@ -29,11 +29,16 @@ async function allGardens(req, res) {
 
 		const totalDocuments = await GardenPlot.countDocuments(); // Count total documents in the collection
 
-		const gardenPlots = await GardenPlot.find({})
+		const gardenPlotsQuery = GardenPlot.find({})
 			.skip(startIndex)
 			.limit(parsedLimit)
 			.sort(sort);
-		await gardenPlots.populate('tasks');
+
+		// Populate the 'tasks' field using the query object
+		gardenPlotsQuery.populate('manager');
+
+		const gardenPlots = await gardenPlotsQuery.exec(); // Execute the query
+
 		const response = {
 			pagination: {
 				currentPage: parsedPage,
@@ -50,6 +55,7 @@ async function allGardens(req, res) {
 		res.status(500).json({ error: 'Internal server error' });
 	}
 }
+
 async function getSpecificGarden(req, res) {
 	try {
 		const { id } = req.params;
