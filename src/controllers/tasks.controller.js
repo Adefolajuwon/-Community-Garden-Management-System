@@ -15,5 +15,15 @@ async function createTask(req, res) {
 }
 
 async function updateTask() {}
-async function getTask() {}
-module.exports = { createTask };
+async function getTasks() {
+	try {
+		const tasks = await Task.find({});
+		if (tasks) {
+			res.status(200).json(tasks);
+		}
+		res.status(404).json({ error: 'Tasks not found' });
+	} catch (error) {
+		res.status(404).json(error);
+	}
+}
+module.exports = { createTask, getTasks };
