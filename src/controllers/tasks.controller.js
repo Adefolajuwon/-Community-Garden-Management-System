@@ -17,15 +17,19 @@ async function createTask(req, res) {
 }
 
 async function updateTask() {}
-async function getTasks() {
+async function getTasks(req, res) {
 	try {
-		const tasks = await Task.find({});
-		if (tasks) {
-			res.status(200).json(tasks);
+		const { id } = req.params;
+		const garden = await GardenPlot.findById(id).populate('tasks');
+		if (!garden) {
+			return res.status(404).json({ error: 'Garden not found' });
 		}
-		res.status(404).json({ error: 'Tasks not found' });
+		const tasks = garden.tasks;
+		res.status(200).json(tasks);
 	} catch (error) {
-		res.status(404).json(error);
+		console.error('Error fetching tasks:', error);
+		res.status(500).json({ error: 'Internal server error' });
 	}
 }
+
 module.exports = { createTask, getTasks };
