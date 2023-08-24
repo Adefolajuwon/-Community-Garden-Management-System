@@ -1,12 +1,14 @@
 const Task = require('../schemas/task.schema');
+const GardenPlot = require('../schemas/garden.schema');
 async function createTask(req, res) {
 	try {
+		const { id } = req.params;
 		const { title, description, assignee } = req.body;
 		const task = await Task.create({ title, description, assignee });
-
-		// Populate the 'assignee' field and select the 'firstname' field
 		await task.populate('assignee', 'firstname');
-
+		const garden = await GardenPlot.findById(id);
+		garden.tasks.push(id);
+		await garden.save();
 		res.status(200).json(task);
 	} catch (error) {
 		console.error(error);
