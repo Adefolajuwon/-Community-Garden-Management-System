@@ -38,7 +38,6 @@ async function getSpecificUser(req, res) {
 			res.status(404).json({ error: 'User not found' });
 		}
 	} catch (error) {
-		// Handle errors and send an appropriate error response
 		console.error('Error fetching user:', error);
 		res.status(500).json({ error: 'Internal server error' });
 	}
