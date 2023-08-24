@@ -1,7 +1,7 @@
 const Task = require('../schemas/task.schema');
 async function createTask() {
 	try {
-		const { title, description, asignee } = req.body;
+		const { title, description, assignee } = req.body;
 		const task = await (
 			await Task.create({ title, description, assignee })
 		).populate('assignee');
