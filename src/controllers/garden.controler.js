@@ -33,7 +33,7 @@ async function allGardens(req, res) {
 			.skip(startIndex)
 			.limit(parsedLimit)
 			.sort(sort);
-
+		await gardenPlots.populate('tasks');
 		const response = {
 			pagination: {
 				currentPage: parsedPage,
