@@ -79,7 +79,7 @@ const { response } = require('../../app');
 // // it('GET /user/id--> 404 ', () => {});
 it('POST /register --> new user', async () => {
 	const response = await request(app)
-		.post('/api/auth/register') // Use relative path
+		.post('/api/auth/register')
 		.send({
 			username: 'travis',
 			email: 'oadefolajuwon@gmail.com',
