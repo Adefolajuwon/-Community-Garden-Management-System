@@ -59,39 +59,38 @@ const { response } = require('../../app');
 // 		expect(response.body.error).toBe('Username taken');
 // 	});
 // });
-it('GET /user/id --> specific user', () => {
-	return response(app)
-		.get('/user/:username')
-		.expect('Content-Type', /json/)
-		.expect(200)
-		.then((response) => {
-			expect(response.body).toEqual(
-				expect.objectContaining({
-					username: expect.any(String),
-					email: expect.any(String),
-					bio: expect.any(String),
-				})
-			);
-		});
-});
-// it('GET /user/id--> 404 ', () => {});
-// it('POST /register --> new user', () => {
-// 	return request(app)
-// 		.post('/todos')
-// 		.send({
-// 			username: 'travis',
-// 			email: expect.any('oadefolajuwon@gmail.com'),
-// 			bio: expect.any('food is greeat'),
-// 		})
-// 		.expect('Content-Type', /json/)
-// 		.expect(201)
-// 		.then((response) => {
-// 			expect(response.body).toEqual(
-// 				expect.objectContaining({
-// 					username: expect.any('travis'),
-// 					email: expect.any('oadefolajuwon@gmail.com'),
-// 					bio: expect.any('food is greeat'),
-// 				})
-// 			);
-// 		});
+// it('GET /user/id --> specific user', () => {
+// 	return (
+// 		request(app)
+// 			.get('/user/:tremo')
+// 			// .expect('Content-Type', /json/)
+// 			.expect(200)
+// 			.then((response) => {
+// 				expect(response.body).toEqual(
+// 					expect.objectContaining({
+// 						username: expect.any(String),
+// 						email: expect.any(String),
+// 						bio: expect.any(String),
+// 					})
+// 				);
+// 			})
+// 	);
 // });
+// // it('GET /user/id--> 404 ', () => {});
+it('POST /register --> new user', async () => {
+	const response = await request(app)
+		.post('/api/auth/register') // Use relative path
+		.send({
+			username: 'travis',
+			email: 'oadefolajuwon@gmail.com',
+			bio: 'food is greeat',
+		})
+		.expect(201);
+	expect(response.body).toEqual(
+		expect.objectContaining({
+			username: 'travis',
+			email: 'oadefolajuwon@gmail.com',
+			bio: 'food is greeat',
+		})
+	);
+});
