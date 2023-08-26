@@ -1,147 +1,50 @@
 [
-    {
-      "tip": "Choose plants that are well-suited to your climate and soil type."
-    },
-    {
-      "tip": "Start with a small garden to avoid feeling overwhelmed."
-    },
-    {
-      "tip": "Provide proper spacing between plants to allow for growth."
-    },
-    {
-      "tip": "Use mulch to retain moisture and prevent weed growth."
-    },
-    {
-      "tip": "Water deeply and less frequently to encourage deep root growth."
-    },
-    {
-      "tip": "Plant native species to attract local wildlife and pollinators."
-    },
-    {
-      "tip": "Rotate crops to prevent soil depletion and reduce pest problems."
-    },
-    {
-      "tip": "Prune trees and shrubs regularly to maintain their health and shape."
-    },
-    {
-      "tip": "Use companion planting to naturally repel pests and improve growth"
-    },
-    {
-      "tip": "Start seeds indoors before the growing season for a head start."
-    },
-    {
-      "tip": "Harvest vegetables and fruits at the peak of ripeness for best flavor."
-    },
-    {
-      "tip": "Create a compost pile to recycle kitchen and garden waste."
-    },
-    {
-      "tip": "Install rain barrels to collect and reuse rainwater for irrigation."
-    },
-    {
-      "tip": "Choose disease-resistant plant varieties to reduce the need for pesticides."
-    },
-    {
-      "tip": "Plant herbs like basil and mint to naturally repel insects."
-    },
-    {
-      "tip": "Use organic fertilizers to promote healthy soil and plant growth."
-    },
-    {
-      "tip": "Keep a garden journal to track planting dates, successes, and challenges."
-    },
-    {
-      "tip": "Attract beneficial insects like ladybugs and bees to your garden."
-    },
-    {
-      "tip": "Create raised beds to improve soil drainage and control pests."
-    },
-    {
-      "tip": "Test your soil's pH and amend it as needed for optimal plant health."
-    },
-    {
-      "tip": "Provide proper support for climbing plants like tomatoes and beans."
-    },
-    {
-      "tip": "Harvest herbs before they flower to maintain their flavor and potency."
-    },
-    {
-      "tip": "Protect young plants from pests with row covers or netting."
-    },
-    {
-      "tip": "Create a focal point in your garden with a colorful or unique plant."
-    },
-    {
-      "tip": "Avoid over-watering by checking soil moisture before watering."
-    },
-    {
-      "tip": "Use natural pest control methods like introducing beneficial insects."
-    },
-    {
-      "tip": "Choose plants with different bloom times for year-round color."
-    },
-    {
-      "tip": "Use trellises and arbors to add vertical interest to your garden."
-    },
-    {
-      "tip": "Save and store seeds from your favorite plants for future planting."
-    },
-    {
-      "tip": "Provide shade for delicate plants during hot summer months."
-    },
-    {
-      "tip": "Remove faded flowers to encourage more blooms."
-    },
-    {
-      "tip": "Plant cover crops in the off-season to improve soil fertility."
-    },
-    {
-      "tip": "Create a welcoming garden space with seating and pathways."
-    },
-    {
-      "tip": "Use natural alternatives like neem oil to control pests."
-    },
-    {
-      "tip": "Plant a variety of flowers to attract different pollinators."
-    },
-    {
-      "tip": "Avoid using synthetic pesticides to protect beneficial insects."
-    },
-    {
-      "tip": "Provide wind protection for delicate plants with fences or barriers."
-    },
-    {
-      "tip": "Use well-draining soil mix for potted plants to prevent root rot."
-    },
-    {
-      "tip": "Harvest leafy greens while young for tender and flavorful leaves."
-    },
-    {
-      "tip": "Create a wildlife-friendly garden with bird feeders and water sources."
-    },
-    {
-      "tip": "Plant garlic and onions to naturally repel many garden pests."
-    },
-    {
-      "tip": "Use natural compost teas as a liquid fertilizer for plants."
-    },
-    {
-      "tip": "Choose colorful and fragrant flowers to attract butterflies."
-    },
-    {
-      "tip": "Install a drip irrigation system to conserve water and minimize runoff."
-    },
-    {
-      "tip": "Prune fruit trees in late winter to encourage healthy growth and fruiting."
-    },
-    {
-      "tip": "Design your garden layout to ensure easy access for maintenance."
-    },
-    {
-      "tip": "Integrate edible plants into your landscape for both beauty and food."
-    },
-    {
-      "tip": "Experiment with different planting techniques like companion planting."
-    }
-  ]
-  
+  { "tip": "Choose plants that are well-suited to your climate and soil type." },
+  { "tip": "Start with a small garden to avoid feeling overwhelmed." },
+  { "tip": "Provide proper spacing between plants to allow for growth." },
+  { "tip": "Use mulch to retain moisture and prevent weed growth." },
+  { "tip": "Water deeply and less frequently to encourage deep root growth." },
+  { "tip": "Plant native species to attract local wildlife and pollinators." },
+  { "tip": "Rotate crops to prevent soil depletion and reduce pest problems." },
+  { "tip": "Prune trees and shrubs regularly to maintain their health and shape." },
+  { "tip": "Use companion planting to naturally repel pests and improve growth." },
+  { "tip": "Start seeds indoors before the growing season for a head start." },
+  { "tip": "Harvest vegetables and fruits at the peak of ripeness for best flavor." },
+  { "tip": "Create a compost pile to recycle kitchen and garden waste." },
+  { "tip": "Install rain barrels to collect and reuse rainwater for irrigation." },
+  { "tip": "Choose disease-resistant plant varieties to reduce the need for pesticides." },
+  { "tip": "Plant herbs like basil and mint to naturally repel insects." },
+  { "tip": "Use organic fertilizers to promote healthy soil and plant growth." },
+  { "tip": "Keep a garden journal to track planting dates, successes, and challenges." },
+  { "tip": "Attract beneficial insects like ladybugs and bees to your garden." },
+  { "tip": "Create raised beds to improve soil drainage and control pests." },
+  { "tip": "Test your soil's pH and amend it as needed for optimal plant health." },
+  { "tip": "Provide proper support for climbing plants like tomatoes and beans." },
+  { "tip": "Harvest herbs before they flower to maintain their flavor and potency." },
+  { "tip": "Protect young plants from pests with row covers or netting." },
+  { "tip": "Create a focal point in your garden with a colorful or unique plant." },
+  { "tip": "Avoid over-watering by checking soil moisture before watering." },
+  { "tip": "Use natural pest control methods like introducing beneficial insects." },
+  { "tip": "Choose plants with different bloom times for year-round color." },
+  { "tip": "Use trellises and arbors to add vertical interest to your garden." },
+  { "tip": "Save and store seeds from your favorite plants for future planting." },
+  { "tip": "Provide shade for delicate plants during hot summer months." },
+  { "tip": "Remove faded flowers to encourage more blooms." },
+  { "tip": "Plant cover crops in the off-season to improve soil fertility." },
+  { "tip": "Create a welcoming garden space with seating and pathways." },
+  { "tip": "Use natural alternatives like neem oil to control pests." },
+  { "tip": "Plant a variety of flowers to attract different pollinators." },
+  { "tip": "Avoid using synthetic pesticides to protect beneficial insects." },
+  { "tip": "Provide wind protection for delicate plants with fences or barriers." },
+  { "tip": "Use well-draining soil mix for potted plants to prevent root rot." },
+  { "tip": "Harvest leafy greens while young for tender and flavorful leaves." },
+  { "tip": "Create a wildlife-friendly garden with bird feeders and water sources." },
+  { "tip": "Plant garlic and onions to naturally repel many garden pests." },
+  { "tip": "Use natural compost teas as a liquid fertilizer for plants." },
+  { "tip": "Choose colorful and fragrant flowers to attract butterflies." },
+  { "tip": "Install a drip irrigation system to conserve water and minimize runoff." },
+  { "tip": "Prune fruit trees in late winter to encourage healthy growth and fruiting." },
+  { "tip": "Design your garden layout to ensure easy access for maintenance." },
+  { "tip": "Integrate edible plants into your landscape for both beauty and food." },
+  { "tip": "Experiment with different planting techniques like companion planting." }
+]
