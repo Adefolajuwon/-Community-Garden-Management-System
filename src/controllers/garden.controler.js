@@ -34,7 +34,6 @@ async function allGardens(req, res) {
 			.limit(parsedLimit)
 			.sort(sort);
 
-		// Populate the 'tasks' field using the query object
 		gardenPlotsQuery.populate('manager');
 
 		const gardenPlots = await gardenPlotsQuery.exec(); // Execute the query

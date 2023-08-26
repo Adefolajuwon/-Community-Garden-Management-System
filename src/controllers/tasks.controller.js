@@ -60,25 +60,32 @@ async function deleteTask(req, res) {
 }
 async function updateTask(req, res) {
 	try {
-		const { gardenId, taskId } = req.params;
+		const { gardenId, taskId, assignee, dueDate } = req.params;
 		const { title, description } = req.body;
-		const garden = findOneById(gardenId).populate('tasks');
+
+		// Find the garden
+		const garden = await GardenPlot.findById(gardenId);
 		if (!garden) {
 			return res.status(404).json({ error: 'Garden not found' });
 		}
+
 		const tasks = garden.tasks;
-		const editTask = tasks.findIndex((task) => task.toString() === taskId);
-		if (deletedTaskIndex === -1) {
+		const editTaskIndex = tasks.findIndex((task) => task.toString() === taskId);
+		if (editTaskIndex === -1) {
 			return res.status(404).json({ error: 'Task not found in the garden' });
 		}
-		const data = {
-			title: title,
-			description: description,
-		};
-		const updateTask = await Task.findByIdAndUpdate(taskId, data);
-		await updateTask.save();
-		res.status(200).json(updateTask);
-	} catch (error) {}
+
+		const updatedTask = await Task.findByIdAndUpdate(
+			taskId,
+			{ title, description, assignee, dueDate },
+			{ new: true }
+		);
+		await garden.save();
+
+		res.status(200).json(updatedTask);
+	} catch (error) {
+		res.status(501).json(error);
+	}
 }
 
-module.exports = { createTask, getTasks, deleteTask };
+module.exports = { createTask, getTasks, deleteTask, updateTask };
