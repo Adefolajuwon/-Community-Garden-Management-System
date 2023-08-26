@@ -21,13 +21,13 @@ async function getTasks(req, res) {
 	try {
 		const { id } = req.params;
 		const garden = await GardenPlot.findById(id).populate('tasks');
-		// console.log(garden);
+		console.log(garden);
 		if (!garden) {
 			return res.status(404).json({ error: 'Garden not found' });
 		}
 
 		const tasks = garden.tasks;
-		console.log(tasks[0]);
+		console.log(tasks);
 
 		if (!tasks || tasks.length === 0) {
 			return res.status(404).json({ error: 'Tasks not found' });
