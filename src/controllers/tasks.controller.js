@@ -38,17 +38,26 @@ async function getTasks(req, res) {
 }
 async function deleteTask(req, res) {
 	try {
-		const { gardenId } = req.params;
-		const { taskId } = req.params;
+		const { gardenId, taskId } = req.params;
 		const garden = await GardenPlot.findById(gardenId);
 		if (!garden) {
-			res.status(404).json({ error: 'Garden not found' });
+			return res.status(404).json({ error: 'Garden not found' });
 		}
 		const tasks = garden.tasks;
-		const deleteTask = tasks.findOneByIdAndDelete(taskId);
-		res.status(200).json(deleteTask);
+		const deletedTaskIndex = tasks.findIndex(
+			(task) => task.toString() === taskId
+		);
+		if (deletedTaskIndex === -1) {
+			return res.status(404).json({ error: 'Task not found in the garden' });
+		}
+		tasks.splice(deletedTaskIndex, 1);
+		await garden.save();
+		const deletedTask = await Task.findByIdAndDelete(taskId);
+		res.status(200).json(deletedTask);
 	} catch (error) {
-		res.status(501).json(error);
+		console.error(error);
+		res.status(500).json({ error: 'Internal server error' });
 	}
 }
+
 module.exports = { createTask, getTasks, deleteTask };
