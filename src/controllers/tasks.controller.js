@@ -2,11 +2,11 @@ const Task = require('../schemas/task.schema');
 const GardenPlot = require('../schemas/garden.schema');
 async function createTask(req, res) {
 	try {
-		const { plotId } = req.params;
+		const { gardenId } = req.params;
 		const { title, description, assignee } = req.body;
 		const task = await Task.create({ title, description, assignee });
 		await task.populate('assignee', 'firstname');
-		const garden = await GardenPlot.findById(plotId);
+		const garden = await GardenPlot.findById(gardenId);
 		garden.tasks.push(task._id);
 		await garden.save();
 		res.status(200).json(task);
@@ -19,8 +19,8 @@ async function createTask(req, res) {
 async function updateTask() {}
 async function getTasks(req, res) {
 	try {
-		const { plotId } = req.params;
-		const garden = await GardenPlot.findById(plotId).populate('tasks');
+		const { gardenId } = req.params;
+		const garden = await GardenPlot.findById(gardenId).populate('tasks');
 		if (!garden) {
 			return res.status(404).json({ error: 'Garden not found' });
 		}
@@ -36,11 +36,11 @@ async function getTasks(req, res) {
 		res.status(500).json({ error: 'Internal server error' });
 	}
 }
-async function deleteTask() {
+async function deleteTask(req, res) {
 	try {
-		const { plotId } = req.params;
-		const { taskIplotI } = req.params;
-		const garden = await GardenPlot.findById(plotId);
+		const { gardenId } = req.params;
+		const { taskId } = req.params;
+		const garden = await GardenPlot.findById(gardenId);
 		if (!garden) {
 			res.status(404).json({ error: 'Garden not found' });
 		}
