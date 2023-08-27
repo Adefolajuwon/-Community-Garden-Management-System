@@ -5,6 +5,6 @@ const gardenTipSchema = new mongoose.Schema({
 	tip: String,
 });
 
-const GardenTip = mongoose.model('gardenTip', gardenTipSchema);
+const GardenTip = mongoose.model('gardenTips', gardenTipSchema);
 
 module.exports = GardenTip;

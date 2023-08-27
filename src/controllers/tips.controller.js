@@ -1,9 +1,9 @@
-const GardenTip = require('../schemas/gardenTip');
+const GardenTips = require('../schemas/gardenTip');
 async function getTips(req, res) {
 	try {
-		const countDocument = await GardenTip.countDocuments();
+		const countDocument = await GardenTips.countDocuments();
 		const randomNumber = Math.floor(Math.random() * countDocument); // Corrected Math.floor usage
-		const randomDocument = await GardenTip.findOne()
+		const randomDocument = await GardenTips.findOne()
 			.skip(randomNumber)
 			.limit(1);
 		if (!randomDocument) {
@@ -17,7 +17,7 @@ async function getTips(req, res) {
 }
 async function getAllTips(req, res) {
 	try {
-		const garden = await GardenTip.find({}).limit(10);
+		const garden = await GardenTips.find({}).limit(10);
 		res.status(200).json(garden);
 	} catch (error) {
 		res.status(501).json(error);
