@@ -63,7 +63,6 @@ async function updateTask(req, res) {
 		const { gardenId, taskId, assignee, dueDate } = req.params;
 		const { title, description } = req.body;
 
-		// Find the garden
 		const garden = await GardenPlot.findById(gardenId);
 		if (!garden) {
 			return res.status(404).json({ error: 'Garden not found' });
@@ -93,7 +92,7 @@ async function completedTask(req, res) {
 		const data = {
 			status: completed,
 		};
-		const task = await task.findByIdAndUpdate(taskId, data, { new: true });
+		const task = await Task.findByIdAndUpdate(taskId, data, { new: true });
 		return res.status(200).json(task);
 	} catch (error) {
 		res.status(200).json(error);
