@@ -107,7 +107,7 @@ async function unCompletedTask(req, res) {
 		}
 
 		res.status(200).json(garden);
-		// const task = garden.tasks;
+		const task = garden.tasks;
 	} catch (error) {
 		res.status(501).json(error);
 	}
