@@ -5,7 +5,7 @@ async function createTask(req, res) {
 		const { gardenId } = req.params;
 		const { title, description, assignee } = req.body;
 		const task = await Task.create({ title, description, assignee });
-		await task.populate('assignee', 'firstname');
+		// await task.populate('assignee', 'firstname');
 		const garden = await GardenPlot.findById(gardenId);
 		garden.tasks.push(task._id);
 		await garden.save();
@@ -90,12 +90,26 @@ async function completedTask(req, res) {
 	try {
 		const { taskId } = req.params;
 		const data = {
-			status: completed,
+			status: 'completed',
 		};
 		const task = await Task.findByIdAndUpdate(taskId, data, { new: true });
 		return res.status(200).json(task);
 	} catch (error) {
 		res.status(200).json(error);
+	}
+}
+async function unCompletedTask(req, res) {
+	try {
+		const { gardenId } = req.params;
+		const garden = await GardenPlot.findById(gardenId).populate('tasks');
+		if (!garden) {
+			res.status(404).json({ error: 'Garden not found' });
+		}
+
+		res.status(200).json(garden);
+		// const task = garden.tasks;
+	} catch (error) {
+		res.status(501).json(error);
 	}
 }
 module.exports = {
@@ -104,4 +118,5 @@ module.exports = {
 	deleteTask,
 	updateTask,
 	completedTask,
+	unCompletedTask,
 };
