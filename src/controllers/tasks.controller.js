@@ -101,7 +101,10 @@ async function completedTask(req, res) {
 async function unCompletedTask(req, res) {
 	try {
 		const { gardenId } = req.params;
-		const garden = await GardenPlot.findById(gardenId).populate('tasks');
+		const garden = await GardenPlot.findById(gardenId)
+			.select('tasks')
+			.populate('tasks');
+
 		if (!garden) {
 			res.status(404).json({ error: 'Garden not found' });
 		}
@@ -113,7 +116,7 @@ async function unCompletedTask(req, res) {
 			return res.status(404).json({ error: 'No pending tasks found' });
 		}
 
-		res.status(200).json(pendingTasks);
+		res.status(200).json({ Pending: pendingTasks });
 	} catch (error) {
 		res.status(501).json(error);
 	}
