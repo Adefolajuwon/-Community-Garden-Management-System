@@ -1,4 +1,4 @@
-<!-- Collaborative Storytelling Platform
+Collaborative Storytelling Platform
 The Collaborative Storytelling Platform is a web-based application that enables users to collaboratively create and shape stories in real time. This platform provides a unique and engaging experience where multiple authors can contribute their creative ideas, characters, and plot twists to develop captivating narratives together.
 
 Collaborative Storytelling Platform
@@ -30,4 +30,4 @@ Fork the repository.
 Create a new branch: git checkout -b feature/my-feature
 Commit your changes: git commit -am 'Add some feature'
 Push to the branch: git push origin feature/my-feature
-Submit a pull request. -->
+Submit a pull request.

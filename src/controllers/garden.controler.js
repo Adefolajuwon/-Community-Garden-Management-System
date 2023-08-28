@@ -2,6 +2,7 @@ const GardenPlot = require('../schemas/garden.schema');
 
 async function newGarden(req, res) {
 	try {
+		const { userId } = req.params;
 		const { name, location, manager } = req.body;
 
 		const garden = await (

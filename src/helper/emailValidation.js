@@ -3,4 +3,5 @@ function validateEmail(email) {
 	const Email = emailRegex.test(email);
 	return Email;
 }
+
 module.export = { validateEmail };
