@@ -87,5 +87,22 @@ async function updateTask(req, res) {
 		res.status(501).json(error);
 	}
 }
-
-module.exports = { createTask, getTasks, deleteTask, updateTask };
+async function completedTask(req, res) {
+	try {
+		const { taskId } = req.params;
+		const data = {
+			status: completed,
+		};
+		const task = await task.findByIdAndUpdate(taskId, data, { new: true });
+		return res.status(200).json(task);
+	} catch (error) {
+		res.status(200).json(error);
+	}
+}
+module.exports = {
+	createTask,
+	getTasks,
+	deleteTask,
+	updateTask,
+	completedTask,
+};
