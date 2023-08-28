@@ -13,5 +13,6 @@ gardenRouter.get('/garden-plots', allGardens);
 gardenRouter.get('/garden-plots/:id', getSpecificGarden);
 gardenRouter.delete('/garden-plots/:id', deleteGarden);
 gardenRouter.put('/garden-plots/:id', updateGarden);
+garden.get('/garden-plots/search');
 
 module.exports = { gardenRouter };

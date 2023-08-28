@@ -102,6 +102,12 @@ async function updateGarden(req, res) {
 		res.status(500).json({ error: 'Internal server error' });
 	}
 }
+async function searchGarden(req, res) {
+	try {
+		const { keyword } = req.query;
+		const search = await GardenPlot.findOne(keyword);
+	} catch (error) {}
+}
 
 module.exports = {
 	newGarden,
@@ -109,4 +115,5 @@ module.exports = {
 	getSpecificGarden,
 	deleteGarden,
 	updateGarden,
+	searchGarden,
 };
