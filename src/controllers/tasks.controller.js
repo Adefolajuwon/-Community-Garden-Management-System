@@ -107,7 +107,13 @@ async function unCompletedTask(req, res) {
 		}
 
 		res.status(200).json(garden);
-		const task = garden.tasks;
+		const tasks = garden.tasks;
+		const pendingTasks = tasks.filter((task) => task.status === 'pending');
+		if (pendingTasks.length === 0) {
+			return res.status(404).json({ error: 'No pending tasks found' });
+		}
+
+		res.status(200).json(pendingTasks);
 	} catch (error) {
 		res.status(501).json(error);
 	}

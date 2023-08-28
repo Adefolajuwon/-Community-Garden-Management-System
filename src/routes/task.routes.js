@@ -13,5 +13,5 @@ taskRouter.get('/garden-plots/:gardenId/task', getTasks);
 taskRouter.delete('/garden-plots/:gardenId/task/:taskId', deleteTask);
 taskRouter.put('/garden-plots/:gardenId/task/:taskId', updateTask);
 taskRouter.put('/task/:taskId', completedTask);
-taskRouter.get('/garden-plots/:gardenId/test', unCompletedTask);
+taskRouter.get('/garden-plots/:gardenId/pending', unCompletedTask);
 module.exports = { taskRouter };
