@@ -199,6 +199,7 @@ async function controllerFetchLoggedInUser(req, res) {
 		res.status(401).json({ error: 'An error occurred' });
 	}
 }
+async function assignedTasks() {}
 
 module.exports = {
 	controllerAuthGoogle,
