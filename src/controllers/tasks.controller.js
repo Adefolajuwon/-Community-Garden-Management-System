@@ -8,7 +8,13 @@ async function createTask(req, res) {
 		const oneWeekLater = new Date(currentDate);
 		oneWeekLater.setDate(currentDate.getDate() + 7);
 
-		const task = await Task.create({ title, description, assignee });
+		const task = await Task.create({
+			title,
+			description,
+			assignee,
+			dueDate: oneWeekLater,
+		});
+		console.log(oneWeekLater);
 		// await task.populate('assignee', 'firstname');
 		const garden = await GardenPlot.findById(gardenId);
 		garden.tasks.push(task._id);
