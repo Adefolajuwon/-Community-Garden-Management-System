@@ -119,6 +119,7 @@ async function pendingTasks(req, res) {
 		res.status(501).json(error);
 	}
 }
+async function countTasks(req, res) {}
 module.exports = {
 	createTask,
 	getTasks,

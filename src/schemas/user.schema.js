@@ -23,6 +23,12 @@ const userSchema = new mongoose.Schema({
 			ref: 'GardenPlot',
 		},
 	],
+	tasksAssigned: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: '',
+		},
+	],
 });
 
 module.exports = mongoose.model('User', userSchema);
