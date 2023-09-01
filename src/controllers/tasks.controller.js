@@ -15,14 +15,14 @@ async function createTask(req, res) {
 			assignee,
 			dueDate: oneWeekLater,
 		});
-		console.log(oneWeekLater);
+		// console.log(oneWeekLater);
 		await task.populate('assignee');
 		const garden = await GardenPlot.findById(gardenId);
 		garden.tasks.push(task._id);
-
+		await garden.save();
 		const user = await User.findById(assignee);
 		user.tasksAssigned.push(task._id);
-		await garden.save();
+		await user.save();
 		res.status(200).json(task);
 	} catch (error) {
 		console.error(error);
