@@ -1,5 +1,6 @@
 const Task = require('../schemas/task.schema');
 const GardenPlot = require('../schemas/garden.schema');
+const User = require('../schemas/user.schema');
 async function createTask(req, res) {
 	try {
 		const { gardenId } = req.params;
@@ -18,6 +19,9 @@ async function createTask(req, res) {
 		await task.populate('assignee');
 		const garden = await GardenPlot.findById(gardenId);
 		garden.tasks.push(task._id);
+
+		const user = await User.findById(assignee);
+		user.tasksAssigned.push(task._id);
 		await garden.save();
 		res.status(200).json(task);
 	} catch (error) {
