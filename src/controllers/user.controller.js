@@ -16,7 +16,7 @@ async function createUser(req, res) {
 			password,
 		});
 
-		Send a response back to the client with the created user data
+		// Send a response back to the client with the created user data
 		res.status(201).json(user);
 	} catch (error) {
 		console.error(error);
