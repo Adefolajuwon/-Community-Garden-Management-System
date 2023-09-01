@@ -16,7 +16,7 @@ async function createTask(req, res) {
 			dueDate: oneWeekLater,
 		});
 		// console.log(oneWeekLater);
-		await task.populate('assignee');
+		// await task.populate('assignee');
 		const garden = await GardenPlot.findById(gardenId);
 		garden.tasks.push(task._id);
 		await garden.save();
