@@ -141,6 +141,9 @@ async function assignedTasks(req, res) {
 		const users = assigned.filter((task) => {
 			task._id = userId;
 		});
+		if (users.length === 0) {
+			return res.status(404).json({ error: 'No current task assigned to you' });
+		}
 	} catch (error) {}
 }
 async function countTasks(req, res) {}
