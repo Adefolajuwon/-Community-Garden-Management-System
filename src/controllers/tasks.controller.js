@@ -133,6 +133,12 @@ async function pendingTasks(req, res) {
 		res.status(501).json(error);
 	}
 }
+async function assignedTasks(req, res) {
+	try {
+		const { userId, taskId } = req.params;
+		const task = findOneB;
+	} catch (error) {}
+}
 async function countTasks(req, res) {}
 module.exports = {
 	createTask,
