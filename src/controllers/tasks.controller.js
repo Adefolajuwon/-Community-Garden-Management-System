@@ -136,7 +136,9 @@ async function pendingTasks(req, res) {
 async function assignedTasks(req, res) {
 	try {
 		const { userId, taskId } = req.params;
-		const task = findOneB;
+		const task = await Task.findOneById(taskId);
+		const assigned = task.assignee;
+		const users = assigned.filter((task) => {});
 	} catch (error) {}
 }
 async function countTasks(req, res) {}
