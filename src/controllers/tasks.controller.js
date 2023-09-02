@@ -133,19 +133,19 @@ async function pendingTasks(req, res) {
 		res.status(501).json(error);
 	}
 }
-// async function assignedTasks(req, res) {
-// 	try {
-// 		const { userId, taskId } = req.params;
-// 		const task = await Task.findOneById(taskId);
-// 		const assigned = task.assignee;
-// 		const users = assigned.filter((task) => {
-// 			task._id = userId;
-// 		});
-// 		if (users.length === 0) {
-// 			return res.status(404).json({ error: 'No current task assigned to you' });
-// 		}
-// 	} catch (error) {}
-// }
+async function assignedTasks(req, res) {
+	try {
+		const { userId, taskId } = req.params;
+		const task = await Task.findOneById(taskId);
+		const assigned = task.assignee;
+		const users = assigned.filter((task) => {
+			task._id = userId;
+		});
+		if (users.length === 0) {
+			return res.status(404).json({ error: 'No current task assigned to you' });
+		}
+	} catch (error) {}
+}
 async function countTasks(req, res) {}
 module.exports = {
 	createTask,
