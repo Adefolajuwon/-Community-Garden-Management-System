@@ -144,7 +144,10 @@ async function assignedTasks(req, res) {
 		if (users.length === 0) {
 			return res.status(404).json({ error: 'No current task assigned to you' });
 		}
-	} catch (error) {}
+		res.json(200).json(users);
+	} catch (error) {
+		res.json(501).json(error);
+	}
 }
 async function countTasks(req, res) {}
 module.exports = {
@@ -154,4 +157,5 @@ module.exports = {
 	updateTask,
 	completedTask,
 	pendingTasks,
+	assignedTasks,
 };
