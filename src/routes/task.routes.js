@@ -15,5 +15,5 @@ taskRouter.delete('/garden-plots/:gardenId/task/:taskId', deleteTask);
 taskRouter.put('/garden-plots/:gardenId/task/:taskId', updateTask);
 taskRouter.put('/task/:taskId', completedTask);
 taskRouter.get('/garden-plots/:gardenId/pending', pendingTasks);
-taskRouter.get('/task/:taskId/user/userId', assignedTasks);
+taskRouter.get('/task/:taskId/user/:userId', assignedTasks);
 module.exports = { taskRouter };
