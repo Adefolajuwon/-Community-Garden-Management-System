@@ -27,4 +27,11 @@ authRouter.get(
 	'/google',
 	passportInstance.authenticate('google', { scope: ['email', 'profile'] })
 );
+authRouter.get(
+	'/google/callback',
+	passportInstance.authRouter(
+		passportInstance.authenticate('google', { failureRedirect: '/register' })
+	),
+	controllerAuthGoogle
+);
 module.exports = authRouter;
