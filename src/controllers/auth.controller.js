@@ -1,1 +1,1 @@
-asy;
+async function controllerAuthGoogle() {}
