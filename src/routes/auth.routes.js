@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
+const { controllerAuthGoogle } = require('../controllers/auth.controller');
 
 const passportInstance = require('../lib/passport');
 // const {
