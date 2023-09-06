@@ -11,7 +11,9 @@ async function storeGoogleUser(user) {
 		} else {
 			response = await userSchema.updateOne({ email }, user);
 		}
-	} catch (error) {}
+	} catch (error) {
+		res.json(501).json(error);
+	}
 }
 
 async function insertNewUser(user) {
