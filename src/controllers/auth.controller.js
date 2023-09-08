@@ -17,7 +17,8 @@ async function controllerAuthGoogle(req, res) {
 			process.env.JWT_SECRET,
 			{ expiresIn: '2h' }
 		);
-		res.status(200).json(token);
+		res.redirect(`/login?success=true&token=${token}`);
+		// res.status(200).json(token);
 	} catch (error) {
 		res.status(501).redirect();
 	}

@@ -48,11 +48,6 @@ async function tasks(req, res) {
 }
 
 module.exports = {
-	controllerAuthGoogle,
-	controllerInsertUser,
-	controllerVerifyUserCredentials,
-	controllerFetchLoggedInUser,
-	sendEmail,
 	createUser,
 	getSpecificUser,
 };
