@@ -15,7 +15,7 @@ const fetchUser = async (req, res, next) => {
 	const token = auth[1];
 	try {
 		const payload = jwt.verify(token, JWT_SECRET);
-		req.user = payload.user;
+		req.user = payload;
 		next();
 	} catch (error) {
 		console.log(error);
