@@ -1,5 +1,6 @@
 const { storeGoogleUser } = require('../models/user.models');
-
+require('dotenv').config();
+const jwt = require('jsonwebtoken');
 async function controllerAuthGoogle(req, res) {
 	try {
 		if (!req.isAuthenticated()) {
