@@ -1,7 +1,7 @@
 const { storeGoogleUser } = require('../models/user.models');
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
-async function controllerAuthGoogle(req, res) {
+async function controllerAuthGoogle(req, res, next) {
 	try {
 		if (!req.isAuthenticated()) {
 			res.status(200).json({ error: 'user not authenticated' });
@@ -17,10 +17,10 @@ async function controllerAuthGoogle(req, res) {
 			process.env.JWT_SECRET,
 			{ expiresIn: '2h' }
 		);
-		res.redirect(`/login?success=true&token=${token}`);
-		// res.status(200).json(token);
+		res.redirect(`http://localhost:8000/setauthtoken/${token}`);
 	} catch (error) {
-		res.status(501).redirect();
+		res.status(501).json('internal error');
 	}
+	next();
 }
 module.exports = { controllerAuthGoogle };
