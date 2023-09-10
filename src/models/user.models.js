@@ -4,15 +4,18 @@ const { User } = require('../schemas/user.schema');
 async function storeGoogleUser(user) {
 	try {
 		const { email, provider } = user;
-		let response = User.findOne(email);
 
-		if (!user) {
+		let response = await User.findOne({ email });
+		if (!response) {
 			response = await User.create(user);
 		} else {
-			response = await userSchema.updateOne({ email }, user);
+			response = await User.updateOne({ email }, user);
 		}
+
+		return response;
 	} catch (error) {
-		res.json(501).json(error);
+		console.error(error);
+		throw error;
 	}
 }
 
