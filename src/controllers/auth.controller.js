@@ -13,6 +13,7 @@ async function controllerAuthGoogle(req, res, next) {
 			res.status(505).json('Use not found');
 			return;
 		}
+		console.log(req.user);
 		const user = await storeGoogleUser(req.user);
 
 		if (user?.error) {

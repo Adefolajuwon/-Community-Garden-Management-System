@@ -5,11 +5,11 @@ async function storeGoogleUser(user) {
 	try {
 		const { email, provider } = user;
 
-		let response = await User.findOne({ email });
+		let response = await userSchema.findOne({ email });
 		if (!response) {
-			response = await User.create(user);
+			response = await userSchema.create(user);
 		} else {
-			response = await User.updateOne({ email }, user);
+			response = await userSchema.updateOne({ email }, user);
 		}
 
 		return response;

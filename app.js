@@ -18,6 +18,9 @@ app.use(
 		origin: '*',
 	})
 );
+app.use('/setauthtoken', (req, res) => {
+	res.send('welcome');
+});
 app.use('/api/auth', userRouter);
 app.use('/api', gardenRouter);
 app.use('/api', taskRouter);
