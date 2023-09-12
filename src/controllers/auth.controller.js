@@ -27,7 +27,7 @@ async function controllerAuthGoogle(req, res, next) {
 			{ expiresIn: '2h' }
 		);
 
-		res.redirect(`http://localhost:8000/setauthtoken/${token}`);
+		// res.redirect(`http://localhost:8000/setauthtoken/${token}`);
 	} catch (error) {
 		console.log(error);
 		res.status(501).json('internal error');
