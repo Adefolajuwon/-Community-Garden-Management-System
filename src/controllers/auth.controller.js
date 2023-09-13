@@ -24,6 +24,7 @@ async function controllerAuthGoogle(req, res, next) {
 		let token = jwt.sign(
 			{ _id: user._id, email: user.email },
 			process.env.JWT_SECRET,
+<<<<<<< HEAD
 			{ expiresIn: '6days' }
 		);
 		console.log(token);
@@ -31,6 +32,16 @@ async function controllerAuthGoogle(req, res, next) {
 	} catch (error) {
 		console.log(error);
 		res.status(501).json('internal error');
+=======
+			{ expiresIn: '3h' }
+		);
+		console.log(token);
+
+		res.redirect(`http://localhost:8000/setauthtoken/${token}`);
+	} catch (error) {
+		console.log(error);
+		res.status(501).json(error);
+>>>>>>> 67536fc (removed unwanted code)
 	}
 	next();
 }
