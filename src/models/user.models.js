@@ -1,15 +1,15 @@
-const userSchema = require('../schemas/user.schema');
-const { User } = require('../schemas/user.schema');
+// const userSchema = require('../schemas/user.schema');
+const User = require('../schemas/user.schema');
 
 async function storeGoogleUser(user) {
 	try {
 		const { email, provider } = user;
 
-		let response = await userSchema.findOne({ email });
+		let response = await User.findOne({ email });
 		if (!response) {
-			response = await userSchema.create(user);
+			response = await User.create(user);
 		} else {
-			response = await userSchema.updateOne({ email }, user);
+			response = await User.updateOne({ email }, user);
 		}
 
 		return response;
