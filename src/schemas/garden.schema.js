@@ -13,6 +13,7 @@ const gardenPlotSchema = new mongoose.Schema({
 	},
 	manager: {
 		type: mongoose.Schema.Types.ObjectId,
+		required: true,
 		ref: 'User',
 	},
 	tasks: [

@@ -3,8 +3,9 @@ const GardenPlot = require('../schemas/garden.schema');
 async function newGarden(req, res) {
 	try {
 		// const { userId } = req.params;
-		const { name, location, manager } = req.body;
-
+		// const theUser = req.user;
+		const manager = req.user._id;
+		const { name, location } = req.body;
 		const garden = await (
 			await GardenPlot.create({ name, location, manager })
 		).populate('manager');
