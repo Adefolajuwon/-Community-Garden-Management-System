@@ -20,7 +20,6 @@ async function controllerAuthGoogle(req, res, next) {
 			{ expiresIn: '7d' }
 		);
 		console.log(token);
-
 		res.redirect(`http://localhost:8000/setauthtoken/${token}`);
 	} catch (error) {
 		console.log(error);
