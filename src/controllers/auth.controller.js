@@ -5,34 +5,18 @@ async function controllerAuthGoogle(req, res, next) {
 	try {
 		if (!req.isAuthenticated()) {
 			res.status(200).json({ error: 'user not authenticated' });
-			return;
 		}
-
 		req.session.profile = req.user;
-		if (!req.user) {
-			res.status(505).json('Use not found');
-			return;
-		}
-		console.log(req.user);
 		const user = await storeGoogleUser(req.user);
+		console.log(user);
 
 		if (user?.error) {
-			res.status(505).json('Error occured while trying to store usin n db');
+			res.redirect(`/login?success=false&message=Authentication failed`);
 			return;
 		}
-
 		let token = jwt.sign(
 			{ _id: user._id, email: user.email },
 			process.env.JWT_SECRET,
-<<<<<<< HEAD
-			{ expiresIn: '6days' }
-		);
-		console.log(token);
-		// res.redirect(`http://localhost:8000/setauthtoken/${token}`);
-	} catch (error) {
-		console.log(error);
-		res.status(501).json('internal error');
-=======
 			{ expiresIn: '3h' }
 		);
 		console.log(token);
@@ -41,9 +25,7 @@ async function controllerAuthGoogle(req, res, next) {
 	} catch (error) {
 		console.log(error);
 		res.status(501).json(error);
->>>>>>> 67536fc (removed unwanted code)
 	}
 	next();
 }
-
 module.exports = { controllerAuthGoogle };
