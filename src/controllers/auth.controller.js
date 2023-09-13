@@ -24,7 +24,7 @@ async function controllerAuthGoogle(req, res, next) {
 		let token = jwt.sign(
 			{ _id: user._id, email: user.email },
 			process.env.JWT_SECRET,
-			{ expiresIn: '2h' }
+			{ expiresIn: '6days' }
 		);
 		console.log(token);
 		// res.redirect(`http://localhost:8000/setauthtoken/${token}`);
