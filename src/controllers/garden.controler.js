@@ -1,14 +1,14 @@
 const GardenPlot = require('../schemas/garden.schema');
+const Redis = require('redis');
 
+const client = Redis.createClient();
 async function newGarden(req, res) {
 	try {
 		// const { userId } = req.params;
 		// const theUser = req.user;
-		const manager = req.user._id;
+		// const manager = req.user._id;
 		const { name, location } = req.body;
-		const garden = await (
-			await GardenPlot.create({ name, location, manager })
-		).populate('manager');
+		const garden = await GardenPlot.create({ name, location });
 		if (garden) {
 			res.status(200).json(garden);
 		} else {
