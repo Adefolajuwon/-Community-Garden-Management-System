@@ -11,11 +11,11 @@ const gardenPlotSchema = new mongoose.Schema({
 		required: true,
 		trim: true,
 	},
-	// manager: {
-	// 	type: mongoose.Schema.Types.ObjectId,
-	// 	required: true,
-	// 	ref: 'User',
-	// },
+	manager: {
+		type: mongoose.Schema.Types.ObjectId,
+		required: true,
+		ref: 'User',
+	},
 	tasks: [
 		{
 			type: mongoose.Schema.Types.ObjectId,

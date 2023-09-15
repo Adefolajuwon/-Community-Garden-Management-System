@@ -1,12 +1,14 @@
 const GardenPlot = require('../schemas/garden.schema');
+// const client = require('../../lib/redis');
 const Redis = require('redis');
-
 const client = Redis.createClient();
+const defaultExp = 3600;
 async function newGarden(req, res) {
 	try {
 		// const { userId } = req.params;
 		// const theUser = req.user;
 		// const manager = req.user._id;
+
 		const { name, location } = req.body;
 		const garden = await GardenPlot.create({ name, location });
 		if (garden) {
@@ -22,35 +24,47 @@ async function newGarden(req, res) {
 	}
 }
 async function allGardens(req, res) {
+	const { page, limit, sort } = req.query;
+	const parsedLimit = parseInt(limit);
+	const parsedPage = parseInt(page);
+	const startIndex = (parsedPage - 1) * parsedLimit;
+	const endIndex = parsedLimit * parsedPage;
+
 	try {
-		const { page, limit, sort } = req.query;
-		const parsedLimit = parseInt(limit);
-		const parsedPage = parseInt(page);
-		const startIndex = (parsedPage - 1) * parsedLimit;
-		const endIndex = parsedLimit * parsedPage;
+		// Attempt to get data from Redis
+		client.get('gardens', async (error, garden) => {
+			if (error) {
+				console.error('Redis Error:', error);
+			}
 
-		const totalDocuments = await GardenPlot.countDocuments(); // Count total documents in the collection
+			if (garden) {
+				// Data found in Redis cache, send it as a response
+				return res.json(JSON.parse(garden));
+			} else {
+				// const totalDocuments = await GardenPlot.countDocuments(); // Count total documents in the collection
 
-		const gardenPlotsQuery = GardenPlot.find({})
-			.skip(startIndex)
-			.limit(parsedLimit)
-			.sort(sort);
+				const gardenPlotsQuery = GardenPlot.find({})
+					.skip(startIndex)
+					.limit(parsedLimit)
+					.sort(sort);
 
-		gardenPlotsQuery.populate('manager');
+				gardenPlotsQuery.populate('manager');
 
-		const gardenPlots = await gardenPlotsQuery.exec(); // Execute the query
+				const gardenPlots = await gardenPlotsQuery.exec(); // Execute the query
 
-		const response = {
-			pagination: {
-				currentPage: parsedPage,
-				perPage: parsedLimit,
-				totalPages: Math.ceil(totalDocuments / parsedLimit),
-				totalDocuments: totalDocuments,
-			},
-			gardenPlots: gardenPlots,
-		};
-
-		res.status(200).json(response);
+				const response = {
+					// pagination: {
+					// 	currentPage: parsedPage,
+					// 	perPage: parsedLimit,
+					// 	totalPages: Math.ceil(totalDocuments / parsedLimit),
+					// 	totalDocuments: totalDocuments,
+					// },
+					gardenPlots: gardenPlots,
+				};
+				res.status(200).json(response);
+				client.setex('gardens', defaultExp, JSON.stringify(response));
+			}
+		});
 	} catch (error) {
 		console.error('Error fetching garden plots:', error);
 		res.status(500).json({ error: 'Internal server error' });
