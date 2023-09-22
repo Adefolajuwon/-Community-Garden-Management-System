@@ -11,7 +11,6 @@ async function storeGoogleUser(user) {
 		} else {
 			response = await User.updateOne({ email }, user);
 		}
-
 		return response;
 	} catch (error) {
 		console.error(error);
