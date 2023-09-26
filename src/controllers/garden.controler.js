@@ -14,7 +14,7 @@ async function newGarden(req, res) {
 		if (garden) {
 			res.status(200).json(garden);
 		} else {
-			res.status(501).json({
+			res.status(500).json({
 				error: 'An error occurred while trying to create a new garden.',
 			});
 		}
