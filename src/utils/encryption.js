@@ -21,7 +21,11 @@ function encrypt(input, password) {
 		return encoded;
 	} catch (error) {
 		console.error('Encryption error:', error.message);
-		return null; //
+		return null;
 	}
 }
-module.exports = { encrypt };
+function getKey() {
+	// generate a random key
+	return (Math.random() + 1).toString(36);
+}
+module.exports = { encrypt, getKey };

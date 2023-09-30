@@ -1,6 +1,7 @@
 const Task = require('../schemas/task.schema');
 const GardenPlot = require('../schemas/garden.schema');
 const User = require('../schemas/user.schema');
+const { encrypt, getKey } = require('../utils/encryption');
 async function createTask(req, res) {
 	try {
 		const { gardenId } = req.params;
@@ -8,10 +9,11 @@ async function createTask(req, res) {
 		const currentDate = new Date();
 		const oneWeekLater = new Date(currentDate);
 		oneWeekLater.setDate(currentDate.getDate() + 7);
-
+		const key = getKey();
+		const Edescription = await encrypt(description, key);
 		const task = await Task.create({
 			title,
-			description,
+			Edescription,
 			assignee,
 			dueDate: oneWeekLater,
 		});
