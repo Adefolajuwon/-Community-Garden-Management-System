@@ -10,7 +10,7 @@ async function createTask(req, res) {
 		const oneWeekLater = new Date(currentDate);
 		oneWeekLater.setDate(currentDate.getDate() + 7);
 		const key = getKey();
-		const Edescription = await encrypt(description, key);
+		const Edescription = encrypt(description, key);
 		const task = await Task.create({
 			title,
 			Edescription,
