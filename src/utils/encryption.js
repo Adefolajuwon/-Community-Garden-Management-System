@@ -34,4 +34,5 @@ function getKey() {
 	// generate a random key
 	return (Math.random() + 1).toString(36);
 }
+
 module.exports = { encrypt, getKey };
