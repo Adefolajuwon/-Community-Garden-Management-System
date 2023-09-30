@@ -2,23 +2,29 @@ const algorithm = 'aes-256-cbc';
 const crypto = require('crypto');
 //password = 4466444
 //input = book
+
 function encrypt(input, password) {
 	try {
-		let passwordHash = crypto.createHash('md5');
-		passwordHash.update(password);
-		let key = passwordHash.digest('hex');
+		// Hash the password to derive the encryption key
+		const passwordHash = crypto
+			.createHash('sha256')
+			.update(password)
+			.digest('hex');
 
-		let passwordKey = crypto.createHash('md5');
-		passwordKey.update(password + key);
-		let iv = passwordKey.digest('hex');
+		const iv = crypto.randomBytes(16);
 
-		let data = Buffer.from(input, 'utf8').toString('binary');
+		const cipher = crypto.createCipheriv(
+			'aes-256-cbc',
+			Buffer.from(passwordHash, 'hex'),
+			iv
+		);
 
-		let cipher = crypto.createCipheriv(algorithm, key, iv.slice(0, 16));
-		let encrypted =
-			cipher.update(data, 'binary', 'binary') + cipher.final('binary');
-		let encoded = Buffer.from(encrypted, 'binary').toString('base64');
-		return encoded;
+		let encrypted = cipher.update(input, 'utf8', 'base64');
+		encrypted += cipher.final('base64');
+
+		const combinedData = iv.toString('hex') + encrypted;
+
+		return combinedData;
 	} catch (error) {
 		console.error('Encryption error:', error.message);
 		return null;
