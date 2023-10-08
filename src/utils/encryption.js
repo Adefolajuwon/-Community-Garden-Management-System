@@ -34,5 +34,24 @@ function getKey() {
 	// generate a random key
 	return (Math.random() + 1).toString(36);
 }
+function decrypt(input, password) {
+	input = input.replace(/\-/g, '+').replace(/_/g, '/');
+	let edata = Buffer.from(input, 'base64').toString('binary');
 
-module.exports = { encrypt, getKey };
+	let m = crypto.createHash('md5');
+	m.update(password);
+	let key = m.digest('hex');
+
+	m = crypto.createHash('md5');
+	m.update(password + key);
+	let iv = m.digest('hex');
+
+	let decipher = crypto.createDecipheriv(algorithm, key, iv.slice(0, 16));
+	let decrypted =
+		decipher.update(edata, 'binary', 'binary') + decipher.final('binary');
+	let plaintext = Buffer.from(decrypted, 'binary').toString('utf8');
+
+	return plaintext;
+}
+
+module.exports = { encrypt, getKey, decrypt };
