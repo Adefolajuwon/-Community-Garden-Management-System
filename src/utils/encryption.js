@@ -23,7 +23,7 @@ function encrypt(input, password) {
 		encrypted += cipher.final('base64');
 
 		const combinedData = iv.toString('hex') + encrypted;
-
+		g;
 		return combinedData;
 	} catch (error) {
 		console.error('Encryption error:', error.message);
